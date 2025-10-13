@@ -48,10 +48,12 @@ net.Receive("ttt2_exe_broke_contract", function()
 end)
 
 hook.Add("PreDrawOutlines", "ttt2_exe_outline_target", function()
-  local client = LocalPlayer()
-  local target = client:GetTargetPlayer();
+  if GetConVar("ttt2_executioner_outline_target"):GetBool() then
+    local client = LocalPlayer()
+    local target = client:GetTargetPlayer();
 
-  if IsValid(target) && !target:GetNoDraw() && GetConVar("ttt2_executioner_outline_target"):GetBool() then
-    outline.Add(target, Color(163, 15, 28))
+    if IsValid(target) && !target:GetNoDraw() then
+      outline.Add(target, Color(163, 15, 28))
+    end
   end
 end)
