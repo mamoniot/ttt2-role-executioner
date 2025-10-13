@@ -9,6 +9,7 @@ end
 
 CreateConVar("ttt2_executioner_target_multiplier", 2, {FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_REPLICATED})
 CreateConVar("ttt2_executioner_non_target_multiplier", 0.5, {FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_REPLICATED})
+CreateConVar("ttt2_executioner_outline_target", 0, {FCVAR_ARCHIVE, FCVAR_NOTIFY, FCVAR_REPLICATED})
 
 function ROLE:PreInitialize()
   self.color = Color(163, 15, 28, 255)
@@ -124,8 +125,13 @@ if CLIENT then
       max = 1,
       decimal = 1
     })
+
+    form:MakeCheckBox({
+      serverConvar = "ttt2_executioner_outline_target",
+      label = "label_executioner_outline_target",
+    })
   end
-  
+
   hook.Add("TTT2FinishedLoading", "exe_devicon", function() -- addon developer emblem for me ^_^
     AddTTT2AddonDev("76561198049910438")
   end)
