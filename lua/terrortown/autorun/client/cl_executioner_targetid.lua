@@ -52,7 +52,7 @@ hook.Add("PreDrawOutlines", "ttt2_exe_outline_target", function()
     local client = LocalPlayer()
     local target = client:GetTargetPlayer();
 
-    if IsValid(target) && !target:GetNoDraw() && client:GetSubRole() == ROLE_EXECUTIONER then
+    if IsValid(target) && !target:GetNoDraw() && client:IsAlive() && client:GetSubRole() == ROLE_EXECUTIONER then
       outline.Add(target, Color(163, 15, 28))
     end
   end
